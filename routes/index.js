@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+var privateRouter 	= require("express").Router()
+var publicRouter 	= require("express").Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+require('./users')(privateRouter)
+require('./auth')(publicRouter)
 
-module.exports = router;
+module.exports ={
+	private: privateRouter,
+	public: publicRouter
+}
