@@ -1,28 +1,39 @@
 var User = require('../repositories/users');
 
-/* GET users listing. */
 module.exports = function(router) {
   router.route('/users')
     .get(async function(req, res) {
-      users = await User.getAllUsers();
+      var users = await User.getUsers();
       if(users)
         res.send(users);
     })
-    /* POST Add a user */
+
     .post(async function(req, res) {
-      console.log(req.body);
-      var createdUser = await User.addUser(req.body);
-      if(createdUser)
+      //Data Validation
+      var newUser = await User.addUser(req.body.user);
+      if(newUser)
         res.send('User added successfully !');
       else res.send('Failed adding user !');
-    })
+    });
 
-  /* GET user by id. */
   router.route('/users/:id')
     .get(async function(req, res) {
-      user = await User.getUser(req.params.id);
+      var user = await User.getUser(req.params.id);
       if(user)
         res.send(user);
       else res.send('No user found with this ID !');
-    });
+    })
+    .put(async function(req, res) {
+      //Data Validation
+      var updatedUser = await User.updateUser(req.params.id, req.body.user);
+      if(updatedUser)
+        res.send('User updated successfully !');
+      else res.send('Failed updating user !');
+    })
+    .delete(async function(req, res) {
+      var deletedUser = await User.deleteUser(req.params.id);
+      if(deletedUser)
+        res.send('User deleted successfully !');
+      else res.send('Failed deleting user !');
+    })
 }

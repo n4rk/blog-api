@@ -3,6 +3,7 @@
 <head>
   <title>Blog API</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 
 </head>
@@ -15,6 +16,7 @@
           <h2 class="ml-2"><a href="/">Blog<span>API</span></a></h2>
         </div>
         <div>
+          <a class="btn btn-outline-dark mr-2" href="/auth/">Authentication</a>
           <a class="btn btn-outline-dark mr-2" href="/users">Users</a>
           <a class="btn btn-outline-dark mr-2" href="/articles">Articles</a>
         </div>
@@ -22,15 +24,56 @@
     </nav>
 
     <div class="alert alert-info mt-5">
-      <span>Welcome ! This is a Blog API made using : 
+      <span>Welcome ! This is a Blog API made using
         <a href="https://nodejs.org" class="alert-link text-success" target="_blank">NodeJS</a>, 
         <a href="https://expressjs.com" class="alert-link" target="_blank">Express</a>, 
         <a href="https://sequelize.org" class="alert-link text-primary" target="_blank">Sequelize</a> and 
         <a href="https://mysql.com" class="alert-link" target="_blank">MySQL</a>.</span>
     </div>
+    
+    <div class="tableau">
+      <table id="usersTable" class="display">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Rôle</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Row 1 Data 1</td>
+            <td>Row 1 Data 2</td>
+            <td>Row 1 Data 3</td>
+          </tr>
+          <tr>
+            <td>Row 2 Data 1</td>
+            <td>Row 2 Data 2</td>
+            <td>Row 2 Data 3</td>
+          </tr>
+          <tr>
+            <td>Row 3 Data 1</td>
+            <td>Row 3 Data 2</td>
+            <td>Row 3 Data 3</td>
+          </tr>
+          <tr>
+            <td>Row 4 Data 1</td>
+            <td>Row 4 Data 2</td>
+            <td>Row 4 Data 3</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
   </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+  $(document).ready( function () {
+      $('#usersTable').DataTable();
+  } );
+</script>
 </html>
