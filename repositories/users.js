@@ -1,4 +1,4 @@
-var { User } = require('../models/');
+var { User } = require('../models');
 module.exports = {
     getAllUsers() {
         return User.findAll();
@@ -42,8 +42,6 @@ module.exports = {
         });
     },
     addUser(userData) {
-        if(this.getUserByEmail(userData.email))
-            return null;
         var user = User.create(userData)
         return user;
     },
